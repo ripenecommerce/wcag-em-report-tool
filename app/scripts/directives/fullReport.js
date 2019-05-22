@@ -12,7 +12,7 @@ angular.module('wcagReporter')
         restrict: 'E',
         replace: true,
         link: function (scope, element) {
-            var tests = ['.panel-heading', '.sample_narrow', '.score-total'];
+            var tests = ['.panel-heading', '.sample_narrow'];
             var stop = $interval(function () {
                 tests = tests.filter(testFilter(element));
                 if (tests.length === 0) {
