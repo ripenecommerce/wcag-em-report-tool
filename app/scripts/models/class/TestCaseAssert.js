@@ -2,13 +2,17 @@
 
 angular.module('wcagReporter')
 .service('TestCaseAssert', function (evalSampleModel, currentUser) {
-	var protoResult = {
-        description: '',
-        outcome: 'earl:untested'
-    };
+  var protoResult = {
+      description: '',
+      outcome: 'earl:untested'
+  };
 
+  var hiddenOutcomes = [
+    'earl:untested',
+    'earl:inapplicable'
+  ];
 
-	function TestCaseAssert() {
+  function TestCaseAssert() {
         // Copy prototype onto the object - prevents problems with JSON.stringify()
         for (var key in TestCaseAssert.prototype) {
             if (!this.hasOwnProperty(key)) {
@@ -25,7 +29,7 @@ angular.module('wcagReporter')
         tc.subject.forEach(function (page) {
             hasPage = (hasPage || page.title || page.description);
         });
-        return ((tc.result.description || tc.result.outcome !== protoResult.outcome) && hasPage);
+        return ((tc.result.description || ! hiddenOutcomes.includes(tc.result.outcome)) && hasPage);
     };
 
     TestCaseAssert.prototype = {
