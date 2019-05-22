@@ -1,0 +1,38 @@
+.alert,
+.panel .panel-heading,
+.reporter-view table caption {
+  color: #333
+}
+
+.reporter-view {
+  table {
+    td,
+    th {
+      border: solid #dddddd;
+      border-width: 1px 0;
+      padding: 0.5em 1em 0.5em 0;
+      vertical-align: top;
+    }
+  }
+
+  h2 {
+    margin: 1em 0 0.5em;
+    padding-bottom: 0.1em;
+  }
+}
+
+.panel + h3 {
+  margin-top: 40px;
+}
+
+.panel-body.assert-indent {
+  &,
+  .earl-assert {
+    padding-left: 15px;
+  }
+}
+
+.panel-body + hr,
+.panel-heading h1 {
+    margin: 0;
+}
